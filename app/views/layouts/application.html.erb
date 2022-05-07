@@ -10,6 +10,11 @@
   </head>
 
   <body>
+    <!--to display flash from article controller after create successful article-->
+    <% flash.each do | name, msg | %>
+      <%= msg %>
+    <% end %>
+    
     <%= yield %>
   </body>
 </html>
