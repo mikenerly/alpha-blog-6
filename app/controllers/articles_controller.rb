@@ -18,6 +18,11 @@ class ArticlesController < ApplicationController
       #initiate in instance variable of article in our article controller new action
       @article = Article.new
    end
+   #create edit fonction
+   def edit
+      
+      @article = Article.find(params[:id])
+   end
    
    
    def create
@@ -37,6 +42,17 @@ class ArticlesController < ApplicationController
          end
       
    end
+   #create update fonction
+   def update
+      
+     @article = Article.find(params[:id])
+      if @article.update(params.require(:article).permit(:title, :description))#to whitelisted title and description
+         
+         flash[:notice] = "Article was updated successfully."
+         redirect_to @article
+      else
+         render 'edit'
+      end
+   end
    
-    
 end
