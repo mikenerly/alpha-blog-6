@@ -5,7 +5,7 @@
     <tr>
       <th>Title</th>
       <th>Description</th>
-      <th>Actions</th>
+      <th colspan ="3">Actions</th>
     </tr>
   </thead>
 
@@ -14,8 +14,19 @@
       <tr>
         <td><%= article.title %></td>
         <td><%= article.description %></td>
-        <td>Placeholder</td>
+        <td><%= link_to 'show', article_path(article) %></td>
+        <td><%= link_to 'edit', edit_article_path(article) %> </td>
+        <td><%= link_to 'Delete', article_path(article), method: :delete, data: {confirm: "Are you sure ?" } %></td>
+        
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<p>
+  <%= link_to 'Create new Article', new_article_path %> |
+  <%= link_to 'Home page', root_path %>
+  <!--because it's an GET request -->
+  <!--This line below also work as well-->
+  <!-- #link_to 'Create new Article', new_article_path(@articles.new) %>-->
+</p>

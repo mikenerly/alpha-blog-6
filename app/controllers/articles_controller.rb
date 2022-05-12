@@ -54,5 +54,16 @@ class ArticlesController < ApplicationController
          render 'edit'
       end
    end
+   #adding the destroy action
+   
+   def destroy
+      #first find the article by id
+      @article = Article.find(params[:id])
+      #destroy it
+      @article.destroy
+      #redirect to listing page of articles
+      
+      redirect_to articles_path
+   end
    
 end
