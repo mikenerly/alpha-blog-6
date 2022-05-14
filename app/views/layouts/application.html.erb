@@ -11,9 +11,8 @@
 
   <body>
     <!--to display flash from article controller after create successful article-->
-    <% flash.each do | name, msg | %>
-      <%= msg %>
-    <% end %>
+    <!--for calling the block code in partial file name "messages"-->
+    <%=  render 'layouts/messages' %>
     
     <%= yield %>
   </body>

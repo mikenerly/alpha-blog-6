@@ -1,0 +1,5 @@
+<!--to display flash from article controller after create successful article-->
+<!--This block of code in partial file, works in application.html.erb to keep it clearner-->
+<% flash.each do | name, msg | %>
+    <%= msg %>
+<% end %>

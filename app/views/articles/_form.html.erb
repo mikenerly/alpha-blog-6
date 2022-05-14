@@ -1,0 +1,31 @@
+<!--Check first if there any error when trying to save the article-->
+<!--Code for validation error-->
+<!--This is a partial file, where you group all common code and render exactly where you want to-->
+<% if @article.errors.any? %>
+        <h3>The following messages prevent the articles of beeing saved</h3>
+        <ul>
+            <!--Enter in the iterator-->
+            <% @article.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+             <% end %>
+        </ul>
+<% end %>
+<!--This render the form-->
+
+<%= form_with(model: @article, local: true) do |f| %>
+
+    <p>
+        <%= f.label :title %><br/>
+        <%= f.text_field :title %>
+    </p>
+    
+    <p>
+        <%= f.label :description %><br/>
+        <%= f.text_area :description %>
+    </p>
+    
+    <p>
+        <%= f.submit %>
+    </p>
+
+<% end %>
