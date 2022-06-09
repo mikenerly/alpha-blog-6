@@ -1,32 +1,30 @@
-<h1>Articles listing page</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th colspan ="3">Actions</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @articles.each do |article| %>
-      <tr>
-        <td><%= article.title %></td>
-        <td><%= article.description %></td>
-        <td><%= link_to 'show', article_path(article) %></td>
-        <td><%= link_to 'edit', edit_article_path(article) %> </td>
-        <td><%= link_to 'Delete', article_path(article), method: :delete, data: {confirm: "Are you sure ?" } %></td>
-        
-      </tr>
+<div id= "page-content"> <!--for the background color-->
+  <h1 class="text-center mt-4">Listing all articles</h1> <!--We use a class of bootstrap to center and put a marging top -->
+  
+  <div class="container">
+    <% @articles.each do |article| %> <!--here we are interating to all articles and actions-->
+      <div class="row justify-content-md-center">
+        <div class="col-8 mt-4">
+          <div class="card text-center shadow mb-5 bg-white rounded">
+            <div class="card-header font-italic">
+              by Mykirah Grace Eustache
+            </div>
+            <div class="card-body">
+              <h5 class="card-title"><%= link_to article.title, article_path(article), class: "text-success" %></h5><!--transform to a link, and redirect to this article show page, use a class to change the link color to success-->
+              <p class="card-text"><%= truncate(article.description, length: 100) %></p><!--using truncate method to give a length number to description-->
+             <!-- <a href="#" class="btn btn-outline-success">View</a> -->
+              <%= link_to "View", article_path(article), class: "btn btn-outline-success" %>
+             <!-- <a href="#" class="btn btn-outline-info">Edit</a>-->
+              <%= link_to "Edit", edit_article_path(article), class: "btn btn-outline-info" %>
+              <!--<a href="#" class="btn btn-outline-danger">Delete</a>-->
+              <%= link_to "Delete", method: :destroy,  class: "btn btn-outline-danger" %>
+            </div>
+            <div class="card-footer text-muted">
+              2 days ago
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
-
-<p>
-  <%= link_to 'Create new Article', new_article_path %> |
-  <%= link_to 'Home page', root_path %>
-  <!--because it's an GET request -->
-  <!--This line below also work as well-->
-  <!-- #link_to 'Create new Article', new_article_path(@articles.new) %>-->
-</p>
+  </div>
+</div>

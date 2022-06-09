@@ -1,31 +1,45 @@
 <!--Check first if there any error when trying to save the article-->
 <!--Code for validation error-->
-<!--This is a partial file, where you group all common code and render exactly where you want to-->
-<% if @article.errors.any? %>
-        <h3>The following messages prevent the articles of beeing saved</h3>
-        <ul>
-            <!--Enter in the iterator-->
-            <% @article.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-             <% end %>
-        </ul>
-<% end %>
-<!--This render the form-->
-
-<%= form_with(model: @article, local: true) do |f| %>
-
-    <p>
-        <%= f.label :title %><br/>
-        <%= f.text_field :title %>
-    </p>
+<!--This is a partial file, where you group all common code and render exactly
+where you want to-->
+<div class= "container">
+    <% if @article.errors.any? %>
+            <h3>The following messages prevent the articles of beeing saved</h3>
+            <ul>
+                <!--Enter in the iterator-->
+                <% @article.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                 <% end %>
+            </ul>
+    <% end %>
+    <!--This render the form-->
+    <div class="row justify-content-center"> <!--To center the form-->
+        <div class="col-10">
+            <%= form_with(model: @article, class: "shadow p-3 mb-3 bg-info rounded", local: true) do |f| %>
+                <!--Using form-group row class from bootstrap-->
+                <div class="form-group row">
+                    <%= f.label :title, class: "col-2 col-form-label text-light" %>
+                    <div class= "col-10">
+                        <%= f.text_field :title, class: "form-control shadow rounded", placeholder: "Title of article" %>
+                    </div>
+                </div>
+                
+                <div class="form-group row">
+                    <%= f.label :description, class: "col-2 col-form-label text-light" %>
+                    <div class= "col-10">
+                        <%= f.text_area :description, rows: 10, class: "form-control shadow rounded", placeholder:"Description of article" %>
+                    </div>
+                </div>
+                
+                <div class="form-group row justify-content-center">
+                    <%= f.submit class: "btn btn-outline-light btn-lg" %>
+                </div>
+                
+            <% end %>
+            <%= link_to '[ Cancel and Return to listing page ]', articles_path, class:"form-group row justify-content-center text-info" %>
+        </div>
+        
+    </div>
+       
+</div>
     
-    <p>
-        <%= f.label :description %><br/>
-        <%= f.text_area :description %>
-    </p>
-    
-    <p>
-        <%= f.submit %>
-    </p>
-
-<% end %>
