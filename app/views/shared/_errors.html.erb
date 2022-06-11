@@ -1,0 +1,16 @@
+<% if @article.errors.any? %>
+    <!--Styling the error message with bootstrap-->
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <h4 class="alert-heading">The following messages prevent the articles of beeing saved</h4>
+        <ul>
+            <!--Enter in the iterator-->
+            <% @article.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+        </ul>
+        <!--below to show up the button alert-->
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+<% end %>
