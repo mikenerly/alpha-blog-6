@@ -4,7 +4,6 @@
     <title>AlphaBlog</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -14,11 +13,14 @@
     <!--Move the navbar to a partial form-->
     <!--call the partial form name _navigation under layouts folder-->
       <%= render 'layouts/navigation' %>
-    
+    <div id= "page-content"> <!--for the background color-->
     <!--to display flash from article controller after create successful article-->
     <!--for calling the block code in partial file name "messages"-->
-    <%=  render 'layouts/messages' %>
-    
-    <%= yield %>
+      <%=  render 'layouts/messages' %>
+      <%= yield %>
+    </div>
+    <!--Adding the footer to all pages-->
+    <%= render 'layouts/footer' %>
   </body>
 </html>
+
