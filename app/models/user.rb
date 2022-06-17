@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+    #add the code to specify one to many association
+    has_many :articles
     #add validations for user and email
     validates :username, presence: true, 
                          uniqueness: { case_sensitive: false }, 
