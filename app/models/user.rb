@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+    
+    before_save { self.email = email.downcase } #to convert email to downcase letter
     #add the code to specify one to many association
     has_many :articles
     #add validations for user and email
