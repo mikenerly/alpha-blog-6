@@ -5,4 +5,9 @@ Rails.application.routes.draw do
     #to get all the route for acticles
     #resources :articles, only: [ :show, :index, :new, :create, :edit, :update ]
     resources :articles
+    #adding signup routes to the app
+    get 'signup', to: 'users#new'
+    #post 'users', to: 'users#create' #one route
+    resources :users, except: [:new]
+    
 end

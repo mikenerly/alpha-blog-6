@@ -8,20 +8,27 @@ where you want to-->
     <div class="row justify-content-center"> <!--To center the form-->
         <div class="col-10">
             <!--here to render the errors valiidation from errors.html.erb partial-->
-            <%= render 'shared/errors', obj: @article %>
-            <%= form_with(model: @article, class: "shadow p-3 mb-3 bg-info rounded", local: true) do |f| %>
+            <%= render 'shared/errors', obj: @user %>
+            <%= form_with(model: @user, class: "shadow p-3 mb-3 bg-info rounded", local: true) do |f| %>
                 <!--Using form-group row class from bootstrap-->
                 <div class="form-group row">
-                    <%= f.label :title, class: "col-2 col-form-label text-light" %>
+                    <%= f.label :username, class: "col-2 col-form-label text-light" %>
                     <div class= "col-10">
-                        <%= f.text_field :title, class: "form-control shadow rounded", placeholder: "Title of article" %>
+                        <%= f.text_field :username, class: "form-control shadow rounded", placeholder: "Enter a username" %>
                     </div>
                 </div>
                 
                 <div class="form-group row">
-                    <%= f.label :description, class: "col-2 col-form-label text-light" %>
+                    <%= f.label :email, class: "col-2 col-form-label text-light" %>
                     <div class= "col-10">
-                        <%= f.text_area :description, rows: 10, class: "form-control shadow rounded", placeholder:"Description of article" %>
+                        <%= f.email_field :email, class: "form-control shadow rounded", placeholder:"Enter your email address" %>
+                    </div>
+                </div>
+                
+                <div class="form-group row">
+                    <%= f.label :password, class: "col-2 col-form-label text-light" %> <!--using virtual attribute of password field-->
+                    <div class= "col-10">
+                        <%= f.password_field :password, class: "form-control shadow rounded", placeholder:"Choose a password" %>
                     </div>
                 </div>
                 
