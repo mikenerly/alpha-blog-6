@@ -15,4 +15,5 @@ class User < ApplicationRecord
                          length: { maximum: 105 },
                          format: { with: VALID_EMAIL_REGEX }
     #to test regular expression go to rebular.com
+    has_secure_password
 end
