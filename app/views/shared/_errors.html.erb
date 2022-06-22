@@ -1,7 +1,7 @@
 <% if obj.errors.any? %> <!--to not use the error form only for articles-->
     <!--Styling the error message with bootstrap-->
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <h4 class="alert-heading">The following messages prevent the articles of beeing saved</h4>
+        <h4 class="alert-heading">The following messages prevent the <%= obj.class.name.downcase %> of beeing saved</h4>
         <ul>
             <!--Enter in the iterator-->
             <% obj.errors.full_messages.each do |msg| %>
