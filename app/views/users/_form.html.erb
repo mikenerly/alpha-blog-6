@@ -33,7 +33,8 @@ where you want to-->
                 </div>
                 
                 <div class="form-group row justify-content-center">
-                    <%= f.submit 'Sign up', class: "btn btn-outline-light btn-lg" %>
+                    <!--this code below, after the submit, will check whether it's new record of user to change the button name-->
+                    <%= f.submit(@user.new_record? ? "Sign up": "Update Account", class: "btn btn-outline-light btn-lg") %>
                 </div>
                 
             <% end %>
