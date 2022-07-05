@@ -1,0 +1,16 @@
+  <h2 class="text-center mt-4"><%= @user.username %>'s profile</h2>
+
+<!--Check first if there any error when trying to save the article-->
+<!--Code for validation error-->
+
+<!--To control a gravatar, it's associate an img to your email address-->
+<%= gravatar_for @user, size: 200 %>
+
+<div class="text-center mt-4">
+  <%= link_to "Edit your profile", edit_user_path(@user), class: "btn btn-outline-info" %>
+</div>
+
+<h3 class="text-center mt-4">Articles</h3>
+
+<!--Render the all articles this user has created-->
+<%= render 'articles/article' %>
