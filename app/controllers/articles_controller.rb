@@ -9,7 +9,7 @@ class ArticlesController < ApplicationController
    #define index#action for root of articles
    def index
        
-       @articles = Article.all
+       @articles = @articles = Article.paginate(page: params[:page], per_page: 5)
        
    end
    
