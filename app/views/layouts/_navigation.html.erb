@@ -28,9 +28,12 @@
                 <%= link_to "About us!", about_path, class: "dropdown-item" %>
               </div>
             </li>
-            
+            <!--Add login link and path and logout-->
             <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              <%= link_to 'Log in', login_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Logout', logout_path, class: "nav-link", method: :delete %>
             </li>
           </ul>
           
