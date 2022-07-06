@@ -29,8 +29,11 @@ class ArticlesController < ApplicationController
       #@article = Article.new(params.require(:article).permit(:title, :description))
       #another way by using article_params similar to code above
       @article = Article.new(article_params)
+
+      #@article.user = User.first # <--- Add this line to make articles have a default user in the database
+      @article.user = User.first
       
-      @article.user = User.first # <--- Add this line to make articles have a default user in the database
+      
       
       #render plain: @article.inspect
       #save it to the database
