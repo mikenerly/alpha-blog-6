@@ -31,7 +31,7 @@ class ArticlesController < ApplicationController
       @article = Article.new(article_params)
 
       #@article.user = User.first # <--- Add this line to make articles have a default user in the database
-      @article.user = User.first
+      @article.user = current_user # this is to associate each articles create by its user
       
       
       
