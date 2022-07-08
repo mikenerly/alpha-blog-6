@@ -11,4 +11,5 @@ module ApplicationHelper
     end
     
    #remove two method current_user and logges_in? from here to application_Controller
+   
 end

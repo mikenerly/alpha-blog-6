@@ -1,6 +1,9 @@
 class ArticlesController < ApplicationController
    #set a helper to a use the action before each method
    before_action :set_article, only: [:show, :edit, :update, :destroy]
+   #set a helper to use before action for user rectriction by link
+   before_action :require_user, except: [:show, :index]
+   before_action :require_same_user, only: [:edit, :update, :destroy]
    
    def show
       
@@ -84,6 +87,13 @@ class ArticlesController < ApplicationController
    #This method whitelisted field "title and description" for extraction of redundancy
    def article_params
       params.require(:article).permit(:title, :description)
+   end
+   #this method will restrict a user to access to edit, update and destroy an articles of another user using link 
+   def require_same_user
+      if current_user != @article.user
+         flash[:alert] = "You can only edit or delete your own article"
+         redirect_to @article
+      end
    end
    
 end
