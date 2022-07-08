@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
    before_action :set_user, only: [:show, :edit, :update]
-   before_action :require_user, only: [:edit, :update]
+   before_action :set_user, only: [:show, :edit, :update, :destroy]
    before_action :require_same_user, only: [:edit, :update]
+   before_action :require_same_user, only: [:edit, :update, :destroy]
+   
    
    def show
     
@@ -40,6 +42,13 @@ class UsersController < ApplicationController
          render 'new' #render the phone allover again
       end
    end
+   #this destroy action will delete the user upon his request
+   def destroy
+    @user.destroy
+    session[:user_id] = nil #this to release the id of session after delete
+    flash[:notice] = "Account and all associated articles successfully deleted"
+    redirect_to articles_path
+  end
    
    private
       def user_params
