@@ -1,5 +1,13 @@
 <!--to display flash from article controller after create successful article-->
 <!--This block of code in partial file, works in application.html.erb to keep it clearner-->
-<% flash.each do | name, msg | %>
-    <%= msg %>
-<% end %>
+
+<div class="container">
+  <% flash.each do |name, msg| %>
+    <div class="alert alert-<%= name == "notice" ? "success" : "danger" %> alert-dismissible fade show" role="alert">
+      <%= msg %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  <% end %> 
+</div>
