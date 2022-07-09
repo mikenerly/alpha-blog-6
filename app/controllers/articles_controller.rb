@@ -15,7 +15,6 @@ class ArticlesController < ApplicationController
        @articles = @articles = Article.paginate(page: params[:page], per_page: 5)
        
    end
-   
    #define a action create and new
    def new
       #initiate in instance variable of article in our article controller new action
@@ -25,8 +24,7 @@ class ArticlesController < ApplicationController
    def edit
       #@article = Article.find(params[:id])
    end
-   
-   
+  
    def create
       #render plain: params[:article]
       #@article = Article.new(params.require(:article).permit(:title, :description))
@@ -74,7 +72,6 @@ class ArticlesController < ApplicationController
       #destroy it
       @article.destroy
       #redirect to listing page of articles
-      
       redirect_to articles_path
    end
    
@@ -90,7 +87,7 @@ class ArticlesController < ApplicationController
    end
    #this method will restrict a user to access to edit, update and destroy an articles of another user using link 
    def require_same_user
-      if current_user != @article.user
+      if current_user != @article.user && !current_user.admin?
          flash[:alert] = "You can only edit or delete your own article"
          redirect_to @article
       end

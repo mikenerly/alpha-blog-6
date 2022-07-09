@@ -45,7 +45,7 @@ class UsersController < ApplicationController
    #this destroy action will delete the user upon his request
    def destroy
     @user.destroy
-    session[:user_id] = nil #this to release the id of session after delete
+    session[:user_id] = nil if @user == current_user #this to release the id of session after delete
     flash[:notice] = "Account and all associated articles successfully deleted"
     redirect_to articles_path
   end
@@ -61,8 +61,10 @@ class UsersController < ApplicationController
      
      #this code restrict user so can only perform delete or edit action on his own articles
       def require_same_user
-          if current_user != @user
-            flash[:alert] = "You can only edit your own account"
+          #the first part is to logout user when delete about, to release the session id
+          #the second part is to allow adim user to stay login after deleting regular user account
+            if current_user != @user && !current_user.admin?
+            flash[:alert] = "You can only edit or delete your own account"
             redirect_to @user
           end
       end

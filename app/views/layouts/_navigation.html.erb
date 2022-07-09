@@ -31,13 +31,11 @@
               </div>
             </li>
             <!--Add login link and path and logout-->
-            
             <% if logged_in? %>
-              <li class="nav-item">
-                <%= link_to current_user.username, user_path(current_user), class: "nav-link" %>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Profile [<%= current_user.username %>]
+                    <!--first part of this code below also check if a user logged in with Admin, and add append (Admin) to Profile-->
+                    <%= "(Adim)" if current_user.admin? %> Profile [<%= current_user.username %>]
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <%= link_to "View your profile", user_path(current_user), class: "dropdown-item" %>
@@ -45,17 +43,16 @@
                     <%= link_to "Delete profile", user_path(current_user), class: "dropdown-item text-danger", method: :delete, data: { confirm: "Are you sure?" } %>
                   </div>
                 </li>
-              </li>
-              <li class="nav-item">
+                <li class="nav-item">
                 <%= link_to 'Logout', logout_path, class: "nav-link", method: :delete %>
-              </li>
-            <% else %>
-              <li class="nav-item">
-                <%= link_to 'Log in', login_path, class: "nav-link" %>
-              </li>
-              <li class="nav-item">
-                <%= link_to 'Sign up', signup_path, class: "nav-link" %>
-              </li>
+                </li>
+              <% else %>
+                <li class="nav-item">
+                  <%= link_to 'Log in', login_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to 'Sign up', signup_path, class: "nav-link" %>
+                </li>
             <% end %>
           </ul>
           
