@@ -1,7 +1,7 @@
 @import "bootstrap";
 
 .navbar {
-  background-color: black !important;
+  background-color: gray !important;
 }
 
 .nav-link{
@@ -19,6 +19,10 @@
 }
 
 #home-container {
+  margin-top: 25px;
+}
+
+#about-container{
   margin-top: 25px;
 }
 
