@@ -30,6 +30,18 @@
                 <%= link_to "About us!", about_path, class: "dropdown-item" %>
               </div>
             </li>
+            <!--adding category link in nav bar-->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Categories
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <% if logged_in? && current_user.admin? %>
+                  <%= link_to "Create new category", new_category_path, class: "dropdown-item" %>
+                <% end %>  
+                <%= link_to "View categories", categories_path, class: "dropdown-item" %>
+              </div>
+            </li>
             <!--Add login link and path and logout-->
             <% if logged_in? %>
                 <li class="nav-item dropdown">
