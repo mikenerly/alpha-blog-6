@@ -84,6 +84,7 @@ class ArticlesController < ApplicationController
    #This method whitelisted field "title and description" for extraction of redundancy
    def article_params
       params.require(:article).permit(:title, :description)
+      params.require(:article).permit(:title, :description, category_ids: []) #to whitelist category IDs
    end
    #this method will restrict a user to access to edit, update and destroy an articles of another user using link 
    def require_same_user
