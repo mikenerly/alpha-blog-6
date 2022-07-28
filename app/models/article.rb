@@ -5,6 +5,6 @@ class Article < ApplicationRecord
    has_many :article_categories
    has_many :categories, through: :article_categories
     #adding validation to articles tables, to require a specific format or lenght
-   validates :title, presence: true, length: { minimum: 6, maximum: 100 }
-   validates :description, presence: true, length: { minimum: 10, maximum: 300 }
+   validates :title, presence: true, length: { minimum: 6, maximum: 200 }
+   validates :description, presence: true, length: { minimum: 10, maximum: 2000 }
 end
